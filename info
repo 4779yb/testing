@@ -1,0 +1,39 @@
+I am writing to provide feedback on the Operational Effectiveness Service (OES), particularly concerning the alerting mechanism currently in place for the Podium controls built on NiFi and EventSurv platforms. While the initial deployment of the OES tool following the IA map closure was a necessary step, the absence of additional resources and the rapidly increasing volume of alerts have raised significant operational challenges.
+
+Current Challenges
+Alert Volume Increase:
+
+The OES tool has generated a high volume of alerts, increasing from approximately 1,500 alerts in January to over 3,000 alerts in May. This surge has put considerable strain on our support team.
+Operational Burden:
+
+Currently, we have one production engineer per shift (3 shifts daily) managing these alerts. The sheer volume and repetitive nature of the work are overwhelming, making it difficult to distinguish between genuine alerts and false positives.
+Risk of Missing Genuine Alerts:
+
+The current alerting mechanism lacks intelligence, leading to a high rate of false positives. This not only burdens the support team but also increases the risk of missing genuine critical alerts, which could have serious implications for the OES platform’s reliability and security.
+Lack of Intelligent Alerting:
+
+The system does not leverage historical trends to suppress known patterns of alerts or to prioritize alerts based on criticality. This has resulted in excessive manual intervention, which is not aligned with the engineering nature of our roles and detracts from our ability to focus on more critical issues.
+Proposed Improvements
+Implementation of Intelligent Alerting:
+
+Introduce an intelligent alerting mechanism that can hold or suppress alerts based on historical data, and accurately detect and prioritize critical alerts. This will significantly reduce the number of false positives and enhance our ability to respond to genuine alerts.
+Resource Allocation:
+
+Given the current volume of alerts, it is essential to reassess our resource allocation. We should consider onboarding additional support or integrating automated systems to handle the alert triage process, reducing the load on individual production engineers.
+Automated Alert Management:
+
+Develop automation tools that can categorize and handle alerts based on predefined criteria, allowing production engineers to focus on resolving genuine issues rather than sifting through false positives.
+Potential Risks
+Operational Fatigue:
+
+The current high volume of alerts may lead to operational fatigue among production engineers, increasing the likelihood of errors and reducing overall efficiency.
+Security and Compliance:
+
+Missing genuine alerts due to alert fatigue could expose us to security vulnerabilities and compliance risks, especially if critical issues are not addressed promptly.
+Reduced Engineering Productivity:
+
+The repetitive nature of managing these alerts takes away valuable time from engineering tasks, which could impact the overall productivity and innovation within the team.
+Conclusion
+Addressing these challenges promptly with a more sophisticated alerting system and better resource management will enhance the effectiveness of the OES tool and alleviate the operational burden on our support team. I look forward to discussing these points further and exploring potential solutions to improve our current setup.
+
+Thank you for your attention to this matter. Please let me know if you require any additional details or if we can arrange a meeting to discuss these concerns in more depth.
