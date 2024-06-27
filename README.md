@@ -90,3 +90,9 @@ Dependencies and Integration:
 Are there new or significantly altered external dependencies?
 Are major integration points affected?
 By following these updated criteria and processes, the SRE team can ensure that all major changes are thoroughly reviewed for production readiness, maintaining system stability and reliability while minimizing risks.
+
+
+
+
+
+
