@@ -1,21 +1,14 @@
+Dear Controls Engineering Team,
 
-#!/bin/bash
+I hope this message finds you well.
 
-# Directories to clean
-DIR_A="/path/to/directoryA"
-DIR_B="/path/to/directoryB"
+I am writing to inform you of a critical incident currently affecting our Kafka system, specifically regarding the CMA orders. We have identified that Kafka CMA orders are failing, which is causing significant disruptions in our operations.
 
-# Function to clean a directory, keeping only the 5 latest files
-clean_directory() {
-  local DIR=$1
+Incident Details:
 
-  # List all files sorted by modification time, and delete all but the 5 newest files
-  ls -t "$DIR" | sed -e '1,5d' | xargs -I {} rm -- "$DIR/{}"
-}
-
-# Clean directories
-clean_directory "$DIR_A"
-clean_directory "$DIR_B"
-
-echo "Cleaned $DIR_A and $DIR_B, keeping only the 5 latest files."
-
+Issue: Kafka CMA orders are failing
+Impact: Disruption in processing CMA orders, affecting downstream services and operational workflows
+Detection Time: [Insert time and date of detection]
+Current Status: Under investigation
+Action Plan:
+Our team has been working diligently to diagnose and address the root cause of this issue. After thorough investigation, we have identified the necessary steps to implement a fix. However, due to the complexity of the issue and the required coordination, the fix is scheduled to be deployed on Monday, [insert specific date].
