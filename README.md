@@ -1,21 +1,69 @@
-o handle situations where Apache NiFi’s flow is halted due to data quality issues (e.g., null values in critical fields like account numbers) while consuming from an upstream Kafka topic, you can use a combination of NiFi processors to manage error handling and data validation. Here’s a general approach to ensure that NiFi continues processing good quality data even when some events have issues:
+import pandas as pd
+import matplotlib.pyplot as plt
 
-Use the ValidateRecord Processor:
+# Data from the image
+data = {
+    'Year': [2022, 2023, 2024, 2025],
+    'Incidents': [567, 558, 616, 550],
+    'User Requests': [1850, 2144, 3780, 5000],
+    'Alerts': [4800, 6000, 13000, 12500],
+    'Infra Cost': [2500, 3000, 3600, 4000],
+    'Unique Users to Podium': [2071, 3958, 7025, 16000],
+    'Controls & MI': [173, 197, 230, 500]
+}
 
-Add a ValidateRecord processor to your flow. This processor can validate the incoming records against a schema (e.g., Avro schema). You can specify rules to handle fields that must not be null. Configure the ValidateRecord processor to define the schema and validation rules. Handle Validation Failures:
+# Create a DataFrame
+df = pd.DataFrame(data)
 
-The ValidateRecord processor will route invalid records to the “failure” relationship. By default, if records fail validation, they can be routed to a different processor for handling. Configure the “failure” relationship to route invalid records to a LogAttribute processor or a custom PutFile processor to log them for further inspection. Route Valid Records:
+# Plot Line Charts for Time-based Trends
+fig, axs = plt.subplots(3, 2, figsize=(14, 10))
 
-Configure the “success” relationship of the ValidateRecord processor to continue processing the valid records. Connect it to the next processor(s) in your flow for further processing. Use RouteOnAttribute Processor:
+# Incidents
+axs[0, 0].plot(df['Year'], df['Incidents'], marker='o', color='b')
+axs[0, 0].set_title('Incidents Over Time')
+axs[0, 0].set_xlabel('Year')
+axs[0, 0].set_ylabel('Incidents')
 
-If you’re not using record-based validation, you can use the RouteOnAttribute processor to inspect specific attributes and route data accordingly. Create dynamic properties in RouteOnAttribute to check for null values or other data quality issues. Route records that fail the checks to a separate path for error handling. Configure Error Handling:
+# User Requests
+axs[0, 1].plot(df['Year'], df['User Requests'], marker='o', color='g')
+axs[0, 1].set_title('User Requests Over Time')
+axs[0, 1].set_xlabel('Year')
+axs[0, 1].set_ylabel('User Requests')
 
-Add error handling logic for your downstream processors. For example, use a PutFile processor to save invalid records to a file or a PutKafka processor to send them to a different Kafka topic for later analysis. Optionally, use a Retry mechanism or error handling flow to manage records that might be processed again after correcting issues. Monitor and Alert:
+# Alerts
+axs[1, 0].plot(df['Year'], df['Alerts'], marker='o', color='r')
+axs[1, 0].set_title('Alerts Over Time (in hundreds)')
+axs[1, 0].set_xlabel('Year')
+axs[1, 0].set_ylabel('Alerts (hundreds)')
 
-Set up monitoring and alerting for your NiFi instance. Use processors like LogAttribute to log events and potential issues. Implement NiFi’s built-in monitoring or integrate with external monitoring tools to keep track of the flow’s health and performance. Example Flow ConsumeKafka (Consumer Processor)
+# Infra Cost
+axs[1, 1].plot(df['Year'], df['Infra Cost'], marker='o', color='m')
+axs[1, 1].set_title('Infra Cost Over Time (in thousands)')
+axs[1, 1].set_xlabel('Year')
+axs[1, 1].set_ylabel('Infra Cost (Thousands)')
 
-ValidateRecord (Validate the incoming data based on schema)
+# Unique Users to Podium
+axs[2, 0].plot(df['Year'], df['Unique Users to Podium'], marker='o', color='orange')
+axs[2, 0].set_title('Unique Users to Podium Over Time')
+axs[2, 0].set_xlabel('Year')
+axs[2, 0].set_ylabel('Unique Users')
 
-success → Further Processing (e.g., transformation, enrichment) failure → LogAttribute or PutFile (Log or store invalid records) Further Processing → Next Steps (e.g., store data, forward to another system)
+# Controls & MI
+axs[2, 1].plot(df['Year'], df['Controls & MI'], marker='o', color='purple')
+axs[2, 1].set_title('Controls & MI Over Time')
+axs[2, 1].set_xlabel('Year')
+axs[2, 1].set_ylabel('Controls & MI')
 
-Tips Regularly review and update your schema and validation rules to adapt to any changes in data requirements. Ensure that your NiFi instance has appropriate error handling and monitoring to minimize disruptions in data processing. By implementing these strategies, you can ensure that your NiFi flow continues to process valid data while handling or ignoring records that don't meet your quality criteria.
+plt.tight_layout()
+plt.show()
+
+
+
+ere are the line charts representing time-based trends for each category from 2022 to 2025:
+
+Incidents Over Time: Shows a slight decrease in 2023, followed by a peak in 2024, then a drop in 2025.
+User Requests Over Time: Steady increase each year, with a notable jump in 2024 and 2025.
+Alerts Over Time: A significant rise from 2022 to 2024, with a slight decrease in 2025.
+Infra Cost Over Time: Gradual and consistent rise in infrastructure costs each year.
+Unique Users to Podium Over Time: Steep increase, particularly between 2024 and 2025.
+Controls & MI Over Time: Gradual increase, with a sharp rise between 2024 and 2025.
