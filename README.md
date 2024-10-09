@@ -1,69 +1,43 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Data from the image
+# Updated data with 2026 values
 data = {
-    'Year': [2022, 2023, 2024, 2025],
-    'Incidents': [567, 558, 616, 550],
-    'User Requests': [1850, 2144, 3780, 5000],
-    'Alerts': [4800, 6000, 13000, 12500],
-    'Infra Cost': [2500, 3000, 3600, 4000],
-    'Unique Users to Podium': [2071, 3958, 7025, 16000],
-    'Controls & MI': [173, 197, 230, 500]
+    'Year': [2022, 2023, 2024, 2025, 2026],
+    'Incidents': [567, 558, 616, 550, 495],
+    'User Requests': [1850, 2144, 3780, 5000, 4500],
+    'Alerts': [480, 600, 1300, 1250, 1200],
+    'Infra Cost': [2500, 3000, 3600, 4000, 4500],
+    'Unique Users to Podium': [2071, 3958, 7025, 16000, 25000],
+    'Tech risk findings': [84, 134, 226, 134, 168],
+    'Controls & MI': [173, 197, 230, 500, 800]
 }
 
 # Create a DataFrame
 df = pd.DataFrame(data)
 
-# Plot Line Charts for Time-based Trends
-fig, axs = plt.subplots(3, 2, figsize=(14, 10))
+# Create a single combined chart
+plt.figure(figsize=(12, 8))
 
-# Incidents
-axs[0, 0].plot(df['Year'], df['Incidents'], marker='o', color='b')
-axs[0, 0].set_title('Incidents Over Time')
-axs[0, 0].set_xlabel('Year')
-axs[0, 0].set_ylabel('Incidents')
+# Plot each metric on the same chart with different styles
+plt.plot(df['Year'], df['Incidents'], marker='o', label='Incidents', color='b')
+plt.plot(df['Year'], df['User Requests'], marker='o', label='User Requests', color='g')
+plt.plot(df['Year'], df['Alerts'], marker='o', label='Alerts (hundreds)', color='r')
+plt.plot(df['Year'], df['Infra Cost'], marker='o', label='Infra Cost (Thousands)', color='m')
+plt.plot(df['Year'], df['Unique Users to Podium'], marker='o', label='Unique Users to Podium', color='orange')
+plt.plot(df['Year'], df['Tech risk findings'], marker='o', label='Tech Risk Findings', color='c')
+plt.plot(df['Year'], df['Controls & MI'], marker='o', label='Controls & MI', color='purple')
 
-# User Requests
-axs[0, 1].plot(df['Year'], df['User Requests'], marker='o', color='g')
-axs[0, 1].set_title('User Requests Over Time')
-axs[0, 1].set_xlabel('Year')
-axs[0, 1].set_ylabel('User Requests')
+# Add titles and labels
+plt.title('Combined Business Metrics (2022-2026)')
+plt.xlabel('Year')
+plt.ylabel('Counts/Values')
+plt.xticks(df['Year'])  # Set x-ticks to the years
+plt.legend()
+plt.grid()
 
-# Alerts
-axs[1, 0].plot(df['Year'], df['Alerts'], marker='o', color='r')
-axs[1, 0].set_title('Alerts Over Time (in hundreds)')
-axs[1, 0].set_xlabel('Year')
-axs[1, 0].set_ylabel('Alerts (hundreds)')
+# Save the figure
+plt.savefig('combined_business_metrics.png')
 
-# Infra Cost
-axs[1, 1].plot(df['Year'], df['Infra Cost'], marker='o', color='m')
-axs[1, 1].set_title('Infra Cost Over Time (in thousands)')
-axs[1, 1].set_xlabel('Year')
-axs[1, 1].set_ylabel('Infra Cost (Thousands)')
-
-# Unique Users to Podium
-axs[2, 0].plot(df['Year'], df['Unique Users to Podium'], marker='o', color='orange')
-axs[2, 0].set_title('Unique Users to Podium Over Time')
-axs[2, 0].set_xlabel('Year')
-axs[2, 0].set_ylabel('Unique Users')
-
-# Controls & MI
-axs[2, 1].plot(df['Year'], df['Controls & MI'], marker='o', color='purple')
-axs[2, 1].set_title('Controls & MI Over Time')
-axs[2, 1].set_xlabel('Year')
-axs[2, 1].set_ylabel('Controls & MI')
-
-plt.tight_layout()
+# Show the plot
 plt.show()
-
-
-
-ere are the line charts representing time-based trends for each category from 2022 to 2025:
-
-Incidents Over Time: Shows a slight decrease in 2023, followed by a peak in 2024, then a drop in 2025.
-User Requests Over Time: Steady increase each year, with a notable jump in 2024 and 2025.
-Alerts Over Time: A significant rise from 2022 to 2024, with a slight decrease in 2025.
-Infra Cost Over Time: Gradual and consistent rise in infrastructure costs each year.
-Unique Users to Podium Over Time: Steep increase, particularly between 2024 and 2025.
-Controls & MI Over Time: Gradual increase, with a sharp rise between 2024 and 2025.
