@@ -1,46 +1,16 @@
-import pandas as pd
-import matplotlib.pyplot as plt
+Feedback on Delivery Management and Process Adherence
 
-# Updated data with 2026 values
-data = {
-    'Year': [2022, 2023, 2024, 2025, 2026],
-    'Incidents': [567, 558, 616, 550, 495],
-    'User Requests': [1850, 2144, 3780, 5000, 4500],
-    'Alerts': [480, 600, 1300, 1250, 1200],
-    'Infra Cost': [2500, 3000, 3600, 4000, 4500],
-    'Unique Users to Podium': [2071, 3958, 7025, 16000, 25000],
-    'Tech risk findings': [84, 134, 226, 134, 168],
-    'Controls & MI': [173, 197, 230, 500, 800]
-}
+During the recent review period, there have been recurring challenges with last-minute prioritization requests that disrupt my team’s planned workload and workflow. The primary concerns are:
 
-# Create a DataFrame
-df = pd.DataFrame(data)
+Ad Hoc Prioritization Requests: The frequent last-minute requests to prioritize tasks often come without the advance notice needed to adjust our capacity planning. This last-minute prioritization leads to operational disruptions and has created instances of rushed execution, which could affect the quality and consistency of our output.
 
-# Create a single combined chart
-plt.figure(figsize=(12, 8))
+Lack of Adherence to Standard Operating Procedures (SOPs): Standard Operating Procedures are not consistently followed, which undermines the predictability and stability of our processes. This lack of structure often results in unnecessary chaos, as my team needs to pivot from planned activities to meet these urgent requests.
 
-# Plot each metric on the same chart with different styles
-plt.plot(df['Year'], df['Incidents'], marker='o', label='Incidents', color='b')
-plt.plot(df['Year'], df['User Requests'], marker='o', label='User Requests', color='g')
-plt.plot(df['Year'], df['Alerts'], marker='o', label='Alerts (hundreds)', color='r')
-plt.plot(df['Year'], df['Infra Cost'], marker='o', label='Infra Cost (Thousands)', color='m')
-plt.plot(df['Year'], df['Unique Users to Podium'], marker='o', label='Unique Users to Podium', color='orange')
-plt.plot(df['Year'], df['Tech risk findings'], marker='o', label='Tech Risk Findings', color='c')
-plt.plot(df['Year'], df['Controls & MI'], marker='o', label='Controls & MI', color='purple')
+Insufficient Requirement Documentation for Capacity Planning: My team has not consistently received clear requirements for planning, leading to resource allocation inefficiencies and operational strain. Proper requirements and go-live details are essential for managing our controls effectively and mitigating risks.
 
-# Add titles and labels
-plt.title('Combined Business Metrics (2022-2026)')
-plt.xlabel('Year')
-plt.ylabel('Counts/Values')
-plt.xticks(df['Year'])  # Set x-ticks to the years
-plt.legend()
-plt.grid()
+To enhance our collaboration and improve operational effectiveness, I recommend the following:
 
-# Save the figure
-plt.savefig('combined_business_metrics.png')
-
-# Show the plot
-plt.show()
-
-
-I believe it’s important to ensure that our decisions and strategies are based on solid evidence rather than forming conclusions prematurely. In that regard, I would like to suggest that we prioritize allowing the evidence to shape our theories and conclusions, rather than fitting the evidence to a preconceived theory. This approach will help us maintain objectivity and make more informed, data-driven decisions.
+Advance Planning & Communication: Providing at least a [specific time frame] of notice for prioritization requests would enable us to allocate resources more effectively.
+Commitment to SOPs: Adhering to SOPs would significantly improve the stability of our operations.
+Clear, Consistent Requirements: Regular documentation of requirements will allow for more accurate capacity planning and reduce operational risk.
+These adjustments would support smoother operations and allow us to manage controls effectively, ensuring the high standards expected in production management.
